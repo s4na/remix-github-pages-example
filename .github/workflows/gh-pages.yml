@@ -32,6 +32,7 @@ jobs:
         run: npm install
         working-directory: ./remix-app
 
+      # TODO: CI, format
       # - run: npm ci
       # - run: npm run format
       # - run: npm run test
