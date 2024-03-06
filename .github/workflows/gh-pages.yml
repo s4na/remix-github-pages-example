@@ -1,23 +1,27 @@
-name: Remix on Github Pages
+name: GitHub Pages
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
-      
+
 jobs:
-  build-deploy:
-    runs-on: ubuntu-20.04
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
 
-      - name: cache dependencies
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache dependencies
         uses: actions/cache@v3
         with:
           path: ~/.npm
@@ -25,20 +29,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: install dependencies
-        run: npm install
-        working-directory: ./remix-app
+      - run: npm ci
+      - run: npm run format
+      - run: npm run test
+      - run: npm run build
 
-      - name: Start server and download static content with wget
-        run: |
-              npm run dev &
-              sleep 10 &&
-              wget --mirror --directory-prefix=public --no-host-directories --page-requisites --adjust-extension --convert-links --no-parent http://localhost:3000
-        working-directory: ./remix-app
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
         with:
-          personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          external_repository: s4na/remix-github-pages-example
