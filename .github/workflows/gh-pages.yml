@@ -33,7 +33,10 @@ jobs:
       # - run: npm run format
       # - run: npm run test
       - name: Build project
-        run: npm run build
+        run: |
+          npm run dev &
+          sleep 10 &&
+          wget --mirror --directory-prefix=out --no-host-directories --page-requisites --adjust-extension --convert-links --no-parent http://localhost:3000
         working-directory: ./remix-app
 
       - name: Deploy
@@ -41,5 +44,4 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-        working-directory: ./remix-app
+          publish_dir: ./remix-app/out
