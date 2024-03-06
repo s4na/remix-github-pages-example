@@ -41,4 +41,4 @@ jobs:
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
-          external_repository: s4na/remix-github-pages-example.github.io
+          external_repository: s4na/remix-github-pages-example
