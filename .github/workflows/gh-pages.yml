@@ -33,12 +33,12 @@ jobs:
         run: |
               npm run dev &
               sleep 10 &&
-              wget --mirror --directory-prefix=out --no-host-directories --page-requisites --adjust-extension --convert-links --no-parent http://localhost:3000
+              wget --mirror --directory-prefix=public --no-host-directories --page-requisites --adjust-extension --convert-links --no-parent http://localhost:3000
         working-directory: ./remix-app
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: ./public
           external_repository: s4na/remix-github-pages-example
