@@ -41,7 +41,7 @@ if (import.meta) {
     //@ts-expect-error
     "app/root.tsx"
   );
-  import.meta.hot.lastModified = "1709741753229.271";
+  import.meta.hot.lastModified = "1709741955124.849";
 }
 var links = () => [...cssBundleHref ? [{
   rel: "stylesheet",
@@ -116,4 +116,4 @@ export {
   App as default,
   links
 };
-//# sourceMappingURL=/build/root-QUPM6AHX.js.map
+//# sourceMappingURL=/build/root-HI6R77GZ.js.map

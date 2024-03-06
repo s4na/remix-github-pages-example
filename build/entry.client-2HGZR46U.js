@@ -28,7 +28,7 @@ if (import.meta) {
     //@ts-expect-error
     "app/entry.client.tsx"
   );
-  import.meta.hot.lastModified = "1709741753229.271";
+  import.meta.hot.lastModified = "1709741955124.849";
 }
 (0, import_react2.startTransition)(() => {
   (0, import_client.hydrateRoot)(
@@ -44,4 +44,4 @@ if (import.meta) {
     }, this)
   );
 });
-//# sourceMappingURL=/build/entry.client-Z7HBHZNY.js.map
+//# sourceMappingURL=/build/entry.client-2HGZR46U.js.map
