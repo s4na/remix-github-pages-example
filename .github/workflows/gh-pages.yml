@@ -32,7 +32,9 @@ jobs:
       # - run: npm ci
       # - run: npm run format
       # - run: npm run test
-      - run: npm run build
+      - name: Build project
+        run: npm run build
+        working-directory: ./remix-app
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -40,3 +42,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+        working-directory: ./remix-app
