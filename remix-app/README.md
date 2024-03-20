@@ -3,6 +3,9 @@
 ```sh
 npm install
 npm run dev
+
+# デバッグログを出したい時
+DEBUG=remix:* npm run dev
 ```
 
 http://localhost:3000/
