@@ -8,7 +8,7 @@ export const meta: MetaFunction = () => {
 };
 
 const articles = [
-  { title: "article1", url: "https://example/articles/1" },
+  { title: "article1", url: "/articles/1" },
   { title: "article2", url: "https://example/articles/2" },
   { title: "article3", url: "https://example/articles/3" },
 ];
