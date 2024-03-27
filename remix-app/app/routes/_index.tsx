@@ -1,10 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Remix App | Articles" },
-    { description: "Articles" },
-  ];
+  return [{ title: "Remix App | Articles" }, { description: "Articles" }];
 };
 
 const articles = [
@@ -20,11 +17,7 @@ export default function Index() {
       <ul>
         {articles.map((article) => (
           <li key={article.url}>
-            <a
-              target="_blank"
-              href={article.url}
-              rel="noopener noreferrer"
-            >
+            <a target="_blank" href={article.url} rel="noopener noreferrer">
               {article.title}
             </a>
           </li>

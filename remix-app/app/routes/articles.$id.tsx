@@ -18,7 +18,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function ArticlePage() {
   const article = useLoaderData<Article>();
-  
+
   return (
     <article>
       <h1>{article.title}</h1>
